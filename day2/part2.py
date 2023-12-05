@@ -1,5 +1,5 @@
 
-f = open("day2.txt")
+f = open("day2/day2.txt")
 
 list = f.read().splitlines()
 

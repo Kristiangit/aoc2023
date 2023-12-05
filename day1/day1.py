@@ -1,5 +1,5 @@
 
-f = open("day1.txt")
+f = open("day1/day1.txt")
 nums = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
 num_nums = "123456789"
 
