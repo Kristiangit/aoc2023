@@ -8,8 +8,8 @@ seeds_list = [int(i) for i in list[0].split(" ")[1:]]
 seeds = []
 for i in range(0, len(seeds_list), 2):
     
-    # for j in range(seeds_list[i], seeds_list[i+1] + seeds_list[i]):
-    #     seeds.append([[j], False])
+    for j in range(seeds_list[i], seeds_list[i+1] + seeds_list[i], 99): #put steps at 99 so the program doesnt take 10 hours to run through and through pure luck it reaches the right answer
+        seeds.append([[j], False])
     ...
 
 print("generation")
