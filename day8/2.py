@@ -12,7 +12,7 @@ for string in list:
     if len(string) < 2:
         if "L" in string[0]:
             recipe = string[0]
-            # print(recipe, len(recipe))
+            print(recipe, len(recipe))
         continue
 
     node_dict[string[0]] = [string[2].strip("(").strip(","), string[-1].strip(")")]
@@ -25,10 +25,10 @@ while currNode != "ZZZ":
         now_step = 0
     else: now_step = 1
 
-    # print(currNode)
+    print(currNode)
     currNode = node_dict[currNode][now_step]
     total_steps += 1
     ...
 
-# print(currNode)
+print(currNode)
 print(total_steps)
