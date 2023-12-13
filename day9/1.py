@@ -14,13 +14,15 @@ for line in list:
 
     
     while all_0 == False:
+        count0 = 0
         diff_lists.append([])
         for i in range(len(diff_lists[curr_diff])-1):
             diff = diff_lists[curr_diff][i+1] - diff_lists[curr_diff][i]
             diff_lists[curr_diff+1].append(diff)
-
-            if diff == 0 and i == len(diff_lists[curr_diff])-2:
-                all_0 = True
+            if diff == 0:
+                count0 += 1
+        if count0 == len(diff_lists[curr_diff])-1:
+            all_0 = True
 
         curr_diff += 1
     
