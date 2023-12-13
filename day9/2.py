@@ -1,27 +1,36 @@
 
-f = open("day1/day1.txt")
-nums = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
-num_nums = "123456789"
+f = open("day9/day9.txt")
 
 list = f.read().splitlines()
-
 total = 0
 
-for string in list:
-    string = string.replace("one", "o1e").replace("two", "t2o").replace("three", "t3e").replace("four", "f4r").replace("five", "f5e").replace("six", "s6").replace("seven", "s7n").replace("eight", "e8ht").replace("nine", "n9ne")
+for line in list:
+    all_0 = False
 
-    for i in string:
-        if i in num_nums:
-            
-            nextNum = i
-            break
-    
-    for j in range(len(string)-1, -1, -1):
-        if string[j] in num_nums:
-            nextNum += string[j]
-            break
-    
+    line = [int(i) for i in line.split(" ")]
+    diff_lists = [line]
+    curr_diff = 0
+    nextNum = 0
 
-    # print(nextNum)
-    total += int(nextNum)
+    
+    while all_0 == False:
+        count0 = 0
+        diff_lists.append([])
+        for i in range(len(diff_lists[curr_diff])-1):
+            diff = diff_lists[curr_diff][i+1] - diff_lists[curr_diff][i]
+            diff_lists[curr_diff+1].append(diff)
+            if diff == 0:
+                count0 += 1
+        if count0 == len(diff_lists[curr_diff])-1:
+            all_0 = True
+
+        curr_diff += 1
+    
+    diff_lists[curr_diff].append(0)
+
+    for i in range(len(diff_lists)-2, -1, -1):
+        nextNum = diff_lists[i][0] - nextNum
+        ...
+    # print(nextNum, diff_lists[0])
+    total += nextNum
 print(total)
