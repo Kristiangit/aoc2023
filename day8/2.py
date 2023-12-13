@@ -19,9 +19,9 @@ for string in list:
     if string[0][-1] == "A":
         currNodes.append(string[0])
     ...
-# print(currNodes)
+print(currNodes)
 all_Z = False
-
+zList = [[0, []] for _ in currNodes]
 while not all_Z:
     z_counter = 0
     now_step = recipe[total_steps % len(recipe)]
@@ -35,10 +35,18 @@ while not all_Z:
         currNodes[i] = node_dict[currNodes[i]][now_step]
         if (currNodes[i])[-1] == "Z":
             z_counter += 1
+            zList[i][1].append(total_steps)
+            zList[i][0] += 1
+    if z_counter >= 1:
+        print()
+        print(zList)
+        if z_counter == len(currNodes):
+                all_Z = True
 
-    if z_counter == len(currNodes):
-            all_Z = True
 
 
+# calculate each node/z thing as a function after length is 3 and find difference and then use math to find intersection between them all
 
+
+print(zList)
 print(total_steps)
