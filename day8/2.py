@@ -21,6 +21,7 @@ for string in list:
     ...
 # print(currNodes)
 all_Z = False
+
 while not all_Z:
     z_counter = 0
     now_step = recipe[total_steps % len(recipe)]
