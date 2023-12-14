@@ -34,19 +34,39 @@ while not all_Z:
 
         currNodes[i] = node_dict[currNodes[i]][now_step]
         if (currNodes[i])[-1] == "Z":
-            z_counter += 1
             zList[i][1].append(total_steps)
             zList[i][0] += 1
-    if z_counter >= 1:
-        print()
-        print(zList)
+        if zList[i][0] >= 3:
+            z_counter += 1
+    if z_counter >= 3:
+        # print(z_counter, zList)
         if z_counter == len(currNodes):
                 all_Z = True
 
 
+print(zList)
+
+for i in range(len(zList)-1,):
+    for j in range(len(zList)):
+        for a in range(len(zList)):
+            for b in range(len(zList)):
+                for c in range(len(zList)):
+                    counter = 0
+                    answer = zList[i][1][0] * zList[j][1][0] * zList[a][1][0] * zList[b][1][0] * zList[c][1][0]
+                    for k in range( len(zList)):
+                        if answer % zList[k][1][0] != 0:
+                            # print(answer)
+                            counter += 1
+                            break
+                        else:
+                            counter += 1
+                    if counter == 4: break
+                if counter == 4: break
+            if counter == 4: break
+        if counter == 4: break
+    if counter == 4: break
 
 # calculate each node/z thing as a function after length is 3 and find difference and then use math to find intersection between them all
 
-
-print(zList)
-print(total_steps)
+# print(zList)
+print(answer, counter)
