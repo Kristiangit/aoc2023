@@ -72,11 +72,14 @@ while grid[y][x] != "S":
     steps += 1
 grid[y][x] = "X"
 
+non_X = []
 for y in range(1, len(grid)-1):
     print(grid[y])
-    for x in range(1, len(y)-1):
+    for x in range(1, len(grid[y])-1):
+        # print(grid[y][x], end="")
         if grid[y][x] != "X":
-            ...
+            non_X.append([x,y])
             
-
-print(steps, steps/2)
+print()
+print(non_X)
+# print(steps, steps/2)

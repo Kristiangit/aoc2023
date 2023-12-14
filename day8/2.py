@@ -21,7 +21,7 @@ for string in list:
     ...
 print(currNodes)
 all_Z = False
-zList = [[0, []] for _ in currNodes]
+zList = []
 while not all_Z:
     z_counter = 0
     now_step = recipe[total_steps % len(recipe)]
@@ -34,39 +34,29 @@ while not all_Z:
 
         currNodes[i] = node_dict[currNodes[i]][now_step]
         if (currNodes[i])[-1] == "Z":
-            zList[i][1].append(total_steps)
-            zList[i][0] += 1
-        if zList[i][0] >= 3:
+            zList.append(total_steps)
             z_counter += 1
-    if z_counter >= 3:
         # print(z_counter, zList)
-        if z_counter == len(currNodes):
+    if z_counter == len(currNodes) or len(zList) == len(currNodes):
                 all_Z = True
 
 
 print(zList)
+answer = zList[0]
+all_Z = False
+while not all_Z:
+    counter = 0
+    for i in range(len(zList)):
+        if answer % zList[i] == 0:
+            counter += 1
+    if counter >= 2:
+        print(answer, counter)
+        if counter == len(zList):
+            all_Z = True
+            break
 
-for i in range(len(zList)-1,):
-    for j in range(len(zList)):
-        for a in range(len(zList)):
-            for b in range(len(zList)):
-                for c in range(len(zList)):
-                    counter = 0
-                    answer = zList[i][1][0] * zList[j][1][0] * zList[a][1][0] * zList[b][1][0] * zList[c][1][0]
-                    for k in range( len(zList)):
-                        if answer % zList[k][1][0] != 0:
-                            # print(answer)
-                            counter += 1
-                            break
-                        else:
-                            counter += 1
-                    if counter == 4: break
-                if counter == 4: break
-            if counter == 4: break
-        if counter == 4: break
-    if counter == 4: break
+    answer *= zList[0]
 
 # calculate each node/z thing as a function after length is 3 and find difference and then use math to find intersection between them all
 
-# print(zList)
-print(answer, counter)
+print(zList)
